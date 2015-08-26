@@ -96,8 +96,8 @@
 	
 	CGFloat tokenFieldBottom = CGRectGetMaxY(_tokenField.frame);
 	
-	_separator = [[UIView alloc] initWithFrame:CGRectMake(0, tokenFieldBottom, self.bounds.size.width, 1)];
-	[_separator setBackgroundColor:[UIColor colorWithWhite:0.7 alpha:1]];
+	_separator = [[UIView alloc] initWithFrame:CGRectMake(0, tokenFieldBottom, self.bounds.size.width, 0.5)];
+    [_separator setBackgroundColor:[UIColor colorWithRed:210.0/255.0 green:210.0/255.0 blue:215.0/255.0 alpha:1.0]];
 
     _tableHeader = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, 1)];
     [_tableHeader setBackgroundColor:[UIColor colorWithWhite:0.7 alpha:1]];
@@ -1112,7 +1112,7 @@ NSString * const kTextHidden = @"\u200D"; // Zero-Width Joiner
 #pragma mark - TIToken -
 //==========================================================
 
-CGFloat const hTextPadding = 14;
+CGFloat const hTextPadding = 12;
 CGFloat const vTextPadding = 8;
 CGFloat const kDisclosureThickness = 2.5;
 UILineBreakMode const kLineBreakMode = UILineBreakModeTailTruncation;
@@ -1286,16 +1286,16 @@ CGPathRef CGPathCreateDisclosureIndicatorPath(CGPoint arrowPointFront, CGFloat h
 	}
 	else
 	{
-		CGContextClip(context);
+		/*CGContextClip(context);
 		CGFloat locations[2] = {0, 0.95};
 		CGFloat components[8] = {red + 0.2, green + 0.2, blue + 0.2, alpha, red, green, blue, 0.8};
 		CGGradientRef gradient = CGGradientCreateWithColorComponents(colorspace, components, locations, 2);
 		CGContextDrawLinearGradient(context, gradient, CGPointZero, endPoint, 0);
-		CGGradientRelease(gradient);
+		CGGradientRelease(gradient);*/
 	}
 	
 	CGContextRestoreGState(context);
-	
+	/*
 	CGPathRef innerPath = CGPathCreateTokenPath(self.bounds.size, YES);
     
     // Draw a white background so we can use alpha to lighten the inner gradient
@@ -1319,7 +1319,7 @@ CGPathRef CGPathCreateDisclosureIndicatorPath(CGPoint arrowPointFront, CGFloat h
 	CGContextDrawLinearGradient(context, gradient, CGPointZero, endPoint, 0);
 	CGGradientRelease(gradient);
 	CGContextRestoreGState(context);
-	
+	*/
 	CGFloat accessoryWidth = 0;
 	
 	if (_accessoryType == TITokenAccessoryTypeDisclosureIndicator){
@@ -1335,7 +1335,7 @@ CGPathRef CGPathCreateDisclosureIndicatorPath(CGPoint arrowPointFront, CGFloat h
 		}
 		else
 		{
-			CGContextSaveGState(context);
+			/*CGContextSaveGState(context);
 			CGContextSetShadowWithColor(context, CGSizeMake(0, 1), 1, [[[UIColor whiteColor] colorWithAlphaComponent:0.6] CGColor]);
 			CGContextFillPath(context);
 			CGContextRestoreGState(context);
@@ -1354,7 +1354,7 @@ CGPathRef CGPathCreateDisclosureIndicatorPath(CGPoint arrowPointFront, CGFloat h
 			CGPathRelease(innerShadowPath);
 			CGContextSetStrokeColor(context, (CGFloat[4]){0, 0, 0, 0.3});
 			CGContextStrokePath(context);
-			CGContextRestoreGState(context);
+			CGContextRestoreGState(context);*/
 		}
 		
 		CGPathRelease(disclosurePath);
